@@ -1,24 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Router from "../router/router";
 import "./Layout.scss";
-const Layout = ({ children }) => {
+
+const Layout = ({ children, isLogged }) => {
   return (
     <div className="layout">
       <header>
         <ul>
           <li>
-            <Link to={"/"}>HOME</Link>
+            <Link to={Router.HOME}>HOME</Link>
           </li>
           <li>
-            <Link to={"/about-us"}>ABOUT US</Link>
+            <Link to={Router.ABOUT}>ABOUT US</Link>
           </li>
           <li>
-            <Link to={"/option"}>OPTION 3</Link>
+            <Link to={Router.ABOUT}>OPTION 3</Link>
           </li>
         </ul>
-        <button className="login">
-          <Link to={"/login"}>LOGIN</Link>
-        </button>
+        {!isLogged ? (
+          <div className="login-div">
+            <Link to={Router.LOGIN}>
+              <button>LOGIN</button>
+            </Link>
+          </div>
+        ) : (
+          <div>Icon</div>
+        )}
       </header>
       <main>{children}</main>
       <footer>Footer</footer>

@@ -30,28 +30,31 @@ header {
       }
     }
   }
-  .login {
-    width: 100px;
-    height: 40px;
-    background: linear-gradient(45deg, #fe8419, transparent);
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    box-shadow: 5px 5px 10px black;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 15px;
+  .login-div {
     margin-left: auto;
     margin-right: 100px;
-    border: 2px solid white;
-  }
-  .login:active {
-    box-shadow: none;
-    transform: translate(5px, 5px);
-  }
-  .login a {
-    text-decoration: none;
-    color: #992617;
+
+    button {
+      width: 100px;
+      height: 40px;
+      background: linear-gradient(45deg, #fe8419, transparent);
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      box-shadow: 5px 5px 10px black;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      border: 2px solid white;
+    }
+    button:active {
+      box-shadow: none;
+      transform: translate(5px, 5px);
+    }
+    button a {
+      text-decoration: none;
+      color: #992617;
+    }
   }
 }
 main {

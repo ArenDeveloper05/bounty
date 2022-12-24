@@ -3,6 +3,7 @@ import Layout from "../../layout/Layout";
 import "./Home.scss";
 
 const Home = () => {
+  const token = localStorage.getItem("token");
   const [list, setList] = useState([
     {
       id: 0,
@@ -31,9 +32,36 @@ const Home = () => {
       image: "url",
       created_at: "timestamp",
     },
+    {
+      id: 3,
+      organization: "Organization Name",
+      title: "Organization Title",
+      description: "Organization Title",
+      reward: { from: 0, to: 1000 },
+      image: "url",
+      created_at: "timestamp",
+    },
+    {
+      id: 4,
+      organization: "Organization Name",
+      title: "Organization Title",
+      description: "Organization Title",
+      reward: { from: 0, to: 1000 },
+      image: "url",
+      created_at: "timestamp",
+    },
+    {
+      id: 5,
+      organization: "Organization Name",
+      title: "Organization Title",
+      description: "Organization Title",
+      reward: { from: 0, to: 1000 },
+      image: "url",
+      created_at: "timestamp",
+    },
   ]);
   return (
-    <Layout>
+    <Layout isLogged={token !== null && token !== undefined ? true : false}>
       <div className="home">
         <div className="home-list">
           <div className="home-list-search">
