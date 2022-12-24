@@ -1,9 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../layout/Layout";
+import Router from "../../router/router";
 import "./Home.scss";
 
 const Home = () => {
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const submitReport = () => {
+    if (token !== null && token !== undefined) {
+      console.log("qci uje ynde");
+      navigate(Router.REPORT);
+    } else {
+      navigate(Router.LOGIN);
+    }
+  };
   const [list, setList] = useState([
     {
       id: 0,
@@ -91,6 +103,9 @@ const Home = () => {
                       <span> - </span>
                       <span>{reward.to}</span>
                     </p>
+                  </div>
+                  <div className="home-list-item-reward-submit">
+                    <button onClick={submitReport}>SUBMIT REPORT</button>
                   </div>
                 </div>
                 {/* {organization} */}

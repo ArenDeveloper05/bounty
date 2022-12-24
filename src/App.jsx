@@ -2,15 +2,18 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import ReportPage from "./pages/ReportPage";
 import SignUpPage from "./pages/SignUpPage";
+import Router from "./router/router";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/sign-up" element={<SignUpPage />}></Route>
+        <Route path={Router.HOME} element={<HomePage />}></Route>
+        <Route path={Router.LOGIN} element={<LoginPage />}></Route>
+        <Route path={Router.SIGNUP} element={<SignUpPage />}></Route>
+        <Route path={Router.REPORT} element={<ReportPage />}></Route>
       </Routes>
     </div>
   );

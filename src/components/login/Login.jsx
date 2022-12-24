@@ -147,7 +147,7 @@ const Login = () => {
         </div>
         <button>LOGIN</button>
         <p>
-          Dont have an account? <Link to={`/${Router.SIGNUP}`}>Sign Up</Link>
+          Dont have an account? <Link to={Router.SIGNUP}>Sign Up</Link>
         </p>
       </form>
       <div className="bg-filter"></div>

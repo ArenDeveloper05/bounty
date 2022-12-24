@@ -2,7 +2,8 @@ const Router = {
     HOME: "/",
     ABOUT: "/about",
     LOGIN: "/login",
-    SIGNUP: "sign-up"
+    SIGNUP: "/sign-up",
+    REPORT: "/report"
 
 }
 
