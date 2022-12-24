@@ -3,8 +3,7 @@ const Router = {
     ABOUT: "/about",
     LOGIN: "/login",
     SIGNUP: "/sign-up",
-    REPORT: "/report"
-
+    REPORT: "/report/:id",
 }
 
 export default Router;

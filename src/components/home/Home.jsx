@@ -1,17 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getAllProjects } from "../../api";
 import Layout from "../../layout/Layout";
 import Router from "../../router/router";
+import { login } from "../../store/slices/authSlice";
 import "./Home.scss";
 
 const Home = () => {
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.auth.isLogged);
 
-  const submitReport = () => {
-    if (token !== null && token !== undefined) {
+  // useEffect(() => {
+  //   console.log(isLogged);
+  //   if (token !== null && token !== undefined) {
+  //     !isLogged && dispatch(login());
+  //   }
+  // }, []);
+  useEffect(() => {
+    async function getData() {
+      // setLoading(true);
+      try {
+        const data = await getAllProjects();
+        console.log(data);
+      } catch (error) {}
+      // setLoading(false);
+    }
+    getData();
+  }, []);
+
+  const submitReport = (id) => {
+    if (isLogged) {
       console.log("qci uje ynde");
-      navigate(Router.REPORT);
+      navigate(`report/${id}`);
     } else {
       navigate(Router.LOGIN);
     }
@@ -19,9 +42,10 @@ const Home = () => {
   const [list, setList] = useState([
     {
       id: 0,
-      organization: "Organization Name",
+      organization: "Innova it school",
       title: "Organization Title",
-      description: "Organization Title",
+      description:
+        "Organization Title  www.aperik.com im kayqna mteq bag qteq axper te qtneq es poxy dzez",
       reward: { from: 0, to: 1000 },
       image: "url",
       created_at: "timestamp",
@@ -73,7 +97,7 @@ const Home = () => {
     },
   ]);
   return (
-    <Layout isLogged={token !== null && token !== undefined ? true : false}>
+    <Layout>
       <div className="home">
         <div className="home-list">
           <div className="home-list-search">
@@ -105,7 +129,13 @@ const Home = () => {
                     </p>
                   </div>
                   <div className="home-list-item-reward-submit">
-                    <button onClick={submitReport}>SUBMIT REPORT</button>
+                    <button
+                      onClick={() => {
+                        submitReport(id);
+                      }}
+                    >
+                      SUBMIT REPORT
+                    </button>
                   </div>
                 </div>
                 {/* {organization} */}

@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Router from "../router/router";
 import "./Layout.scss";
 
-const Layout = ({ children, isLogged }) => {
+const Layout = ({ children }) => {
+  const isLogged = useSelector((state) => state.auth.isLogged);
   return (
     <div className="layout">
       <header>
@@ -25,7 +27,7 @@ const Layout = ({ children, isLogged }) => {
             </Link>
           </div>
         ) : (
-          <div>Icon</div>
+          <div className="account-icon">{/* <img src="" alt="" /> */}</div>
         )}
       </header>
       <main>{children}</main>

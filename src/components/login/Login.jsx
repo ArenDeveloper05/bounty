@@ -3,8 +3,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Router from "../../router/router";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { login } from "../../api";
-// import { login } from "../../../store/slices/auth.slice";
+import { logIn } from "../../api";
+import { login } from "../../store/slices/authSlice";
 
 //Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.auth.isLogged);
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -99,9 +101,10 @@ const Login = () => {
     }
     try {
       if (loginData.email.trim() && loginData.password.trim()) {
-        const data = await login(loginData);
+        const data = await logIn(loginData);
         localStorage.setItem("token", data.data.token);
         console.log(data);
+        dispatch(login());
         navigate(Router.HOME);
       }
     } catch (error) {

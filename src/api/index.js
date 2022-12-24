@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const APIUrl = "https://89de-212-34-250-11.eu.ngrok.io/";
+const APIUrl = "https://1e53-87-241-188-229.eu.ngrok.io/api";
 
 const api = axios.create({
     baseURL: APIUrl,
@@ -8,13 +8,23 @@ const api = axios.create({
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
+    withCredentials: true
 });
+
+
+//GET
+export const getAllProjects = async () => {
+    return await api.get(`/projects`);
+};
+export const getSingleProject = async (id) => {
+    return await api.get(`/projects/${id}`);
+};
 
 //POST
 export const signUp = async (signUpData) => {
-    return await api.post(`/api/register`, signUpData);
+    return await api.post(`/register`, signUpData);
 };
-export const login = async (loginData) => {
-    return await api.post(`/api/login`, loginData);
+export const logIn = async (loginData) => {
+    return await api.post(`/login`, loginData);
 };
 
