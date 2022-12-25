@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
-import { addProject } from "../../api";
+import { addProject, uploadProjectImage } from "../../api";
 import Layout from "../../layout/Layout";
 import "./Add.scss";
 
 const Add = () => {
   const id = useSelector((state) => state.auth.userId);
+  const [file, setFile] = useState(null);
   console.log(id);
 
   const [projectData, setProjectData] = useState({
@@ -41,9 +42,26 @@ const Add = () => {
     });
   };
 
+  const uploadImage = async (e) => {
+    try {
+      console.groupEnd();
+      const formData = new FormData();
+      formData.append("image", file);
+      const { data } = await uploadProjectImage(id, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  };
+
+  const uploadFile = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const postProject = async () => {
     try {
-      const data = await addProject(
+      const { data } = await addProject(
         {
           organization: projectData.organization,
           title: projectData.title,
@@ -55,6 +73,13 @@ const Add = () => {
         },
         id
       );
+      // console.log(data.id);
+      const formData = new FormData();
+      formData.append("image", file);
+      const res = await uploadProjectImage(id, data.id, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      console.log(res);
       notifySuccess();
     } catch (error) {}
   };
@@ -68,16 +93,10 @@ const Add = () => {
       <div className="add-project home">
         <div className="add-project-list home-list">
           <section className="add-project-list-edit">
-            {/* <div className="add-project-list-edit-row">
-          <label htmlFor="picture">Նկար</label>
-          <input
-            type="file"
-            id="picture"
-            name="picture"
-            value={doctorPicture}
-            onChange={(e) => setDoctorPicture}
-          />
-        </div> */}
+            <div className="add-project-list-edit-row">
+              <label htmlFor="picture">Image</label>
+              <input type="file" id="picture" onChange={uploadFile} />
+            </div>
             <div className="add-project-list-edit-row">
               <label htmlFor="organization">Organization</label>
               <input

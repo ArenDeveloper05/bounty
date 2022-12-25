@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const APIUrl = "https://fc27-87-241-189-213.eu.ngrok.io/api";
+const APIUrl = "https://49b1-62-89-0-182.eu.ngrok.io/api";
 
 const api = axios.create({
     baseURL: APIUrl,
@@ -40,6 +40,11 @@ export const addProject = async (projectData, id) => {
 export const postChatMessage = async (message) => {
     return await api.post(`chat/`, message);
 };
+export const uploadProjectImage = async (organizatorId, id, sendData, headers) => {
+    return await api.post(`projects/upload/${organizatorId}/${id}`, sendData, headers);
+};
+
+
 
 
 
