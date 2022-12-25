@@ -1,78 +1,120 @@
 .layout {
   background-color: bisque;
   min-height: 100vh;
-}
-header {
-  width: 100%;
-  min-height: 100px;
-  background-color: #f6d4ab;
-  display: flex;
-  align-items: center;
-  background-image: url("../assets/images/header.svg");
-  background-size: cover;
-  ul {
-    list-style-type: none;
-    display: flex;
-    margin-left: auto;
-    li {
-      margin-left: 80px;
-      font-size: 20px;
-      a {
-        text-decoration: none;
-        color: white;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-          sans-serif;
-        transition: 0.3s;
-      }
-      a:hover {
-        color: black;
-      }
-    }
-  }
-  .login-div {
-    margin-left: auto;
-    margin-right: 100px;
 
-    button {
-      width: 100px;
-      height: 40px;
-      background: linear-gradient(45deg, #fe8419, transparent);
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      box-shadow: 5px 5px 10px black;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 15px;
-      border: 2px solid white;
+  header {
+    width: 100%;
+    min-height: 100px;
+    background-color: #f6d4ab;
+    display: flex;
+    align-items: center;
+    background-image: url("../assets/images/header.svg");
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 3px 10px grey;
+    z-index: 999;
+    > ul {
+      list-style-type: none;
+      display: flex;
+      margin-left: auto;
+      li {
+        margin-left: 80px;
+        font-size: 20px;
+        a {
+          text-decoration: none;
+          color: white;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+            sans-serif;
+          transition: 0.3s;
+        }
+        a:hover {
+          color: black;
+        }
+      }
     }
-    button:active {
-      box-shadow: none;
-      transform: translate(5px, 5px);
+    .login-div {
+      margin-left: auto;
+      margin-right: 100px;
+
+      button {
+        width: 100px;
+        height: 40px;
+        background: linear-gradient(45deg, #fe8419, transparent);
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        box-shadow: 5px 5px 10px black;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 15px;
+        border: 2px solid white;
+      }
+      button:active {
+        box-shadow: none;
+        transform: translate(5px, 5px);
+      }
+      button a {
+        text-decoration: none;
+        color: #992617;
+      }
     }
-    button a {
-      text-decoration: none;
-      color: #992617;
+    .account {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      &-messages {
+        width: 150px;
+        height: 200px;
+        position: absolute;
+        top: 100px;
+        box-shadow: 2px 2px 10px grey;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        overflow: auto;
+        li {
+          width: 100%;
+          border: 0.5px solid grey;
+          list-style-type: none;
+          padding: 5px;
+        }
+      }
+      &-notifications {
+        color: #89df25;
+        font-size: 48px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      &-add {
+        // color: #89df25;
+        font-size: 48px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      &-icon {
+        margin-right: 100px;
+        width: 50px;
+        height: 50px;
+        border: solid;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 2px 2px 10px white;
+        margin-left: 24px;
+      }
     }
   }
-  .account-icon {
-    margin-left: auto;
-    margin-right: 100px;
-    width: 50px;
-    height: 50px;
-    border: solid;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 2px 2px 10px white;
+  main {
+    min-height: 700px;
+    margin-top: 100px;
   }
-}
-main {
-  min-height: 700px;
-}
-footer {
-  width: 100%;
-  height: 400px;
-  background-color: black;
-  background-image: url("../assets/images/footer.jpg");
+  footer {
+    width: 100%;
+    height: 400px;
+    background-color: black;
+    background-image: url("../assets/images/footer.jpg");
+  }
 }

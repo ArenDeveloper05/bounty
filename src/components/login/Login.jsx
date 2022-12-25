@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Router from "../../router/router";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { logIn } from "../../api";
-import { login } from "../../store/slices/authSlice";
+import { changeType, login } from "../../store/slices/authSlice";
 
 //Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -103,8 +103,11 @@ const Login = () => {
       if (loginData.email.trim() && loginData.password.trim()) {
         const data = await logIn(loginData);
         localStorage.setItem("token", data.data.token);
-        console.log(data);
+        localStorage.setItem("type", data.data.user.type);
+        localStorage.setItem("userId", data.data.user.id);
+        console.log(data.data.user.type);
         dispatch(login());
+        dispatch(changeType(data.data.user.type));
         navigate(Router.HOME);
       }
     } catch (error) {

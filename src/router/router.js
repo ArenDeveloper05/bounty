@@ -4,6 +4,7 @@ const Router = {
     LOGIN: "/login",
     SIGNUP: "/sign-up",
     REPORT: "/report/:id",
+    ADD: "/add"
 }
 
 export default Router;

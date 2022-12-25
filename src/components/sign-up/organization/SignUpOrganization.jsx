@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./SignUpOrganization";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { login } from "../../../store/slices/auth.slice";
 
 //Toast

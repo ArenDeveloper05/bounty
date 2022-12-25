@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.button {
+  box-shadow: 2px 2px 5px #525252;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.button:focus {
+  outline: none;
+}
+
+$color: #0cf;
+$green: #52feca;
+.nice-button {
+  margin-top: 24px;
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $green;
+    border-radius: 10rem;
+    z-index: -2;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: darken($color, 15%);
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: $green;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+/* optional reset for presentation */
+
+// span {
+//   display: block;
+//   margin-top: 2rem;
+//   font-size: 0.7rem;
+//   color: #777;
+
+//   a {
+//     font-size: 0.7rem;
+//     color: #999;
+//     text-decoration: underline;
+//   }
+// }
