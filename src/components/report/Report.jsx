@@ -11,7 +11,6 @@ const Report = () => {
   const { id } = useParams();
   let [searchParams] = useSearchParams();
   const projectId = searchParams.get("project");
-
   //
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,7 +36,6 @@ const Report = () => {
   }, [message]);
 
   const handleMessageChange = (event) => {
-    // 👇️ access textarea value
     setMessage(event.target.value);
     console.log(event.target.value);
   };

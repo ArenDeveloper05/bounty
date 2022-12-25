@@ -104,7 +104,6 @@ const SignUpUser = () => {
               navigate(Router.LOGIN);
             }
           }
-          // console.log(data);
           console.log("nuynn en ");
         }
       } catch (error) {
@@ -112,8 +111,6 @@ const SignUpUser = () => {
         notifyError();
       }
     }
-
-    // console.log("submit form");
   };
 
   return (

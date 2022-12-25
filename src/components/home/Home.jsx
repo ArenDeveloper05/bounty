@@ -16,7 +16,6 @@ const Home = () => {
   const type = useSelector((state) => state.auth.type);
   const projects = useSelector((state) => state.projects.projects);
   const [search, setSearch] = useState("");
-
   const [list, setList] = useState([]);
   const searchRef = useRef(null);
 
@@ -36,7 +35,6 @@ const Home = () => {
 
   const submitReport = (organizatorId, id) => {
     if (isLogged) {
-      console.log("qci uje ynde");
       navigate(`report/${organizatorId}?project=${id}`);
     } else {
       navigate(Router.LOGIN);
@@ -83,7 +81,6 @@ const Home = () => {
                   description,
                   organizator_id,
                 }) => {
-                  console.log(id);
                   return (
                     <div className="home-list-item" key={id}>
                       <div className="home-list-item-image">
@@ -122,7 +119,6 @@ const Home = () => {
                           </div>
                         )}
                       </div>
-                      {/* {organization} */}
                     </div>
                   );
                 }

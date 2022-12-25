@@ -102,10 +102,7 @@ const Admin = () => {
             if (data.status === 200) {
               navigate(Router.LOGIN);
             }
-            // console.log(data);
           }
-          // console.log(data);
-          console.log("nuynn en ");
         }
       } catch (error) {
         console.log(error);

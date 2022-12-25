@@ -1,8 +1,8 @@
 import "./Login.scss";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import Router from "../../router/router";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logIn } from "../../api";
 import {
   changeType,
@@ -18,7 +18,6 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isLogged = useSelector((state) => state.auth.isLogged);
 
   const [loginData, setLoginData] = useState({
     email: "",

@@ -16,11 +16,12 @@ const Layout = ({ children }) => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { title: "asd" },
-    { title: "hii man how are you?" },
+    { title: "hii how are you?" },
   ]);
 
   const organizatorId = localStorage.getItem("userId");
   console.log(Number(organizatorId));
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getData() {
@@ -32,8 +33,7 @@ const Layout = ({ children }) => {
     }
     getData();
   }, []);
-  // console.log(type);
-  const navigate = useNavigate();
+
   return (
     <div className="layout">
       <header>
@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
             <Link to={Router.HOME}>HOME</Link>
           </li>
           <li>
-            <Link to={Router.ABOUT}>ABOUT US</Link>
+            <Link to={Router.HOME}>ABOUT US</Link>
           </li>
           <li>
             <Link to={Router.HOME}>CONTACT</Link>

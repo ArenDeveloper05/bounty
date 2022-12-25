@@ -1,8 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./SignUpOrganization";
-
-import { useEffect, useState } from "react";
-// import { login } from "../../../store/slices/auth.slice";
 
 //Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -59,43 +56,6 @@ const SignUpUser = () => {
       theme: "light",
     });
 
-  // const dispatch = useDispatch();
-  // const { isLoged } = useSelector((state) => state.auth);
-
-  // useEffect(() => {
-  //   const logout = async () => {
-  //     try {
-  //       const { data } = await $api.get("/logout");
-  //       console.log(data, "data");
-  //     } catch (err) {
-  //       throw new Error(err.message);
-  //     }
-  //   };
-  //   logout();
-  // }, []);
-
-  useEffect(() => {
-    console.log(signUpData);
-    console.log(repeatPassword);
-  }, [signUpData, repeatPassword]);
-
-  // const submitForm = useCallback(
-  //   async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       const { data } = await Login({
-  //         email,
-  //         password,
-  //       });
-  //       dispatch(login());
-  //       localStorage.setItem("token", data.token);
-  //     } catch (err) {
-  //       throw new Error(err.message);
-  //     }
-  //   },
-  //   [email, password, dispatch]
-  // );
-
   const submitForm = async (e) => {
     e.preventDefault();
 
@@ -138,9 +98,7 @@ const SignUpUser = () => {
             if (data.status === 200) {
               navigate(Router.LOGIN);
             }
-            // console.log(data);
           }
-          // console.log(data);
           console.log("nuynn en ");
         }
       } catch (error) {
@@ -148,8 +106,6 @@ const SignUpUser = () => {
         notifyError();
       }
     }
-
-    // console.log("submit form");
   };
 
   return (

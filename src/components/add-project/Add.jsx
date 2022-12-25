@@ -41,20 +41,6 @@ const Add = () => {
       };
     });
   };
-
-  const uploadImage = async (e) => {
-    try {
-      console.groupEnd();
-      const formData = new FormData();
-      formData.append("image", file);
-      const { data } = await uploadProjectImage(id, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-    } catch (err) {
-      throw new Error(err.message);
-    }
-  };
-
   const uploadFile = (e) => {
     setFile(e.target.files[0]);
   };
@@ -73,7 +59,6 @@ const Add = () => {
         },
         id
       );
-      // console.log(data.id);
       const formData = new FormData();
       formData.append("image", file);
       const res = await uploadProjectImage(id, data.id, formData, {
