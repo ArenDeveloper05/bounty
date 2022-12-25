@@ -1,0 +1,39 @@
+.account {
+  &-list {
+    &-edit {
+      margin-top: 40px;
+      max-width: 1000px;
+      padding: 32px;
+      border-radius: 20px;
+      //   box-shadow: 1px 1px 6px #525252;
+      box-shadow: 1px 1px 6px #ffffff;
+      margin: auto;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      h1 {
+        text-align: center;
+      }
+      &-row {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        > div {
+          flex-grow: 1;
+          margin-left: 3rem;
+          outline: none;
+          border: none;
+          box-shadow: 4px 3px 3px #c7c7c7;
+          text-indent: 8px;
+          height: 30px;
+          background-color: white;
+        }
+      }
+    }
+    h1 {
+      text-align: center;
+      margin: 24px 0;
+    }
+  }
+}

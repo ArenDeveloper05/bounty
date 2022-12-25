@@ -1,18 +1,17 @@
-import "./SignUpUser.scss";
+import "./Admin.scss";
 import { useEffect, useRef, useState } from "react";
-import { signUp } from "../../../api";
+import Router from "../../router/router";
+import { Link, useNavigate } from "react-router-dom";
+import { signUp } from "../../api";
 
 //Toast
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
-import Router from "../../../router/router";
 
-const SignUpUser = () => {
+const Admin = () => {
   const navigate = useNavigate();
-
   const [signUpData, setSignUpData] = useState({
-    type: 1,
+    type: 3,
     email: "",
     password: "",
   });
@@ -57,8 +56,8 @@ const SignUpUser = () => {
     });
 
   useEffect(() => {
-    console.log(signUpData.password);
-    console.log(repeatPassword, "repeat");
+    console.log(signUpData);
+    console.log(repeatPassword);
   }, [signUpData, repeatPassword]);
 
   const submitForm = async (e) => {
@@ -103,6 +102,7 @@ const SignUpUser = () => {
             if (data.status === 200) {
               navigate(Router.LOGIN);
             }
+            // console.log(data);
           }
           // console.log(data);
           console.log("nuynn en ");
@@ -112,14 +112,12 @@ const SignUpUser = () => {
         notifyError();
       }
     }
-
-    // console.log("submit form");
   };
 
   return (
     <section className="sign-up">
       <form className="sign-up-form" onSubmit={submitForm}>
-        <h1>User</h1>
+        <h1>Admin Sign Up</h1>
         <div className="sign-up-form-fields">
           <input
             onChange={(e) =>
@@ -168,4 +166,4 @@ const SignUpUser = () => {
   );
 };
 
-export default SignUpUser;
+export default Admin;

@@ -4,7 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isLogged: localStorage.getItem("token") ? true : false,
     type: localStorage.getItem("type"),
-    userId: localStorage.getItem("userId")
+    userId: localStorage.getItem("userId"),
+    notifications: localStorage.getItem("notifications"),
+    email: localStorage.getItem("email")
 };
 
 const authSlice = createSlice({
@@ -20,9 +22,15 @@ const authSlice = createSlice({
         changeType(state, { payload }) {
             console.log(payload, "payload");
             state.type = payload;
-        }
+        },
+        notification(state, { payload }) {
+            state.notifications = payload;
+        },
+        email(state, { payload }) {
+            state.email = payload;
+        },
     },
 });
 
-export const { login, logout, changeType } = authSlice.actions;
+export const { login, logout, changeType, notification, email } = authSlice.actions;
 export default authSlice.reducer;

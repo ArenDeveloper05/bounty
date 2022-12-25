@@ -1,0 +1,54 @@
+.chat {
+  position: fixed;
+  top: 60%;
+  right: 50px;
+  span {
+    font-size: 50px;
+  }
+  cursor: pointer;
+  &-product {
+    box-shadow: 2px 2px 10px grey;
+    background-color: white;
+    border-radius: 30px;
+    overflow: auto;
+    width: 500px;
+    height: 250px;
+    &-write {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: 10px;
+      left: 25px;
+      input {
+        border: none;
+        outline: none;
+        box-shadow: 2px 2px 10px grey;
+        height: 30px;
+        width: 400px;
+      }
+      button {
+        background-color: green;
+        margin-left: 8px;
+        transform: scale(1.2);
+      }
+    }
+    ul {
+      list-style-type: none;
+      li {
+        // border: 0.5px solid rgb(220, 220, 220);
+        padding: 10px 4px;
+        width: max-content;
+        border-radius: 18px;
+        box-shadow: 2px 2px 10px grey;
+        margin-top: 10px;
+        background-color: #0084ff;
+        color: white;
+      }
+    }
+    &-close {
+      font-size: 35px;
+      width: max-content;
+      margin-left: 460px;
+    }
+  }
+}

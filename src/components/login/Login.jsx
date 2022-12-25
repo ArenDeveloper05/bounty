@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Router from "../../router/router";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { logIn } from "../../api";
-import { changeType, login } from "../../store/slices/authSlice";
+import {
+  changeType,
+  email,
+  login,
+  notification,
+} from "../../store/slices/authSlice";
 
 //Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -45,41 +50,9 @@ const Login = () => {
       theme: "light",
     });
 
-  // const dispatch = useDispatch();
-  // const { isLoged } = useSelector((state) => state.auth);
-
-  // useEffect(() => {
-  //   const logout = async () => {
-  //     try {
-  //       const { data } = await $api.get("/logout");
-  //       console.log(data, "data");
-  //     } catch (err) {
-  //       throw new Error(err.message);
-  //     }
-  //   };
-  //   logout();
-  // }, []);
-
   useEffect(() => {
     console.log(loginData);
   }, [loginData]);
-
-  // const submitForm = useCallback(
-  //   async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       const { data } = await Login({
-  //         email,
-  //         password,
-  //       });
-  //       dispatch(login());
-  //       localStorage.setItem("token", data.token);
-  //     } catch (err) {
-  //       throw new Error(err.message);
-  //     }
-  //   },
-  //   [email, password, dispatch]
-  // );
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -105,9 +78,17 @@ const Login = () => {
         localStorage.setItem("token", data.data.token);
         localStorage.setItem("type", data.data.user.type);
         localStorage.setItem("userId", data.data.user.id);
+        localStorage.setItem(
+          "notifications",
+          data.data.user.notifications_count
+        );
+        localStorage.setItem("email", data.data.user.email);
+
         console.log(data.data.user.type);
         dispatch(login());
         dispatch(changeType(data.data.user.type));
+        dispatch(notification(data.data.user.notifications_count));
+        dispatch(email(data.data.user.email));
         navigate(Router.HOME);
       }
     } catch (error) {

@@ -7,6 +7,8 @@ import "./Add.scss";
 
 const Add = () => {
   const id = useSelector((state) => state.auth.userId);
+  console.log(id);
+
   const [projectData, setProjectData] = useState({
     organization: "",
     title: "",

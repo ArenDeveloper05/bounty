@@ -18,6 +18,7 @@
     }
     &-desc {
       margin-bottom: 28px;
+      color: white;
     }
     textarea {
       width: 100%;
@@ -25,6 +26,8 @@
       margin: 28px 0;
       font-size: 30px;
       padding: 10px;
+      outline: none;
+      border: none;
     }
     button {
       width: 110px;

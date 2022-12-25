@@ -1,5 +1,5 @@
 .layout {
-  background-color: bisque;
+  background: linear-gradient(238deg, #52feca, black);
   min-height: 100vh;
 
   header {
@@ -8,7 +8,7 @@
     background-color: #f6d4ab;
     display: flex;
     align-items: center;
-    background-image: url("../assets/images/header.svg");
+    background-color: black;
     background-size: cover;
     position: fixed;
     top: 0;
@@ -18,7 +18,6 @@
     > ul {
       list-style-type: none;
       display: flex;
-      margin-left: auto;
       li {
         margin-left: 80px;
         font-size: 20px;
@@ -66,7 +65,7 @@
       display: flex;
       align-items: center;
       &-messages {
-        width: 150px;
+        width: 300px;
         height: 200px;
         position: absolute;
         top: 100px;
@@ -76,6 +75,13 @@
         flex-direction: column;
         list-style-type: none;
         overflow: auto;
+        border-radius: 0px 0px 30px 30px;
+        b {
+          float: left;
+        }
+        span {
+          float: right;
+        }
         li {
           width: 100%;
           border: 0.5px solid grey;
@@ -88,6 +94,9 @@
         font-size: 48px;
         margin-top: 10px;
         cursor: pointer;
+        span {
+          font-size: 30px;
+        }
       }
       &-add {
         // color: #89df25;
@@ -96,14 +105,27 @@
         cursor: pointer;
       }
       &-icon {
-        margin-right: 100px;
-        width: 50px;
-        height: 50px;
-        border: solid;
-        border-radius: 50%;
+        margin-right: 30px;
         cursor: pointer;
-        box-shadow: 2px 2px 10px white;
         margin-left: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-img {
+          font-size: 60px;
+          color: rgb(179, 179, 179);
+          border-radius: 50%;
+          svg {
+            box-shadow: 2px 2px 10px white;
+            border-radius: 50%;
+          }
+        }
+      }
+      &-logout {
+        color: white;
+        font-size: 40px;
+        margin-right: 60px;
+        cursor: pointer;
       }
     }
   }
@@ -115,6 +137,11 @@
     width: 100%;
     height: 400px;
     background-color: black;
-    background-image: url("../assets/images/footer.jpg");
+    background-image: url("../assets/images/hack.webp");
+    background-size: contain;
+    h3 {
+      color: white;
+      margin: 10px;
+    }
   }
 }

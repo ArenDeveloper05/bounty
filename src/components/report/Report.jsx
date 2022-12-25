@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useParams, useSearchParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { getSingleProject, postReport } from "../../api";
 import Layout from "../../layout/Layout";
@@ -8,10 +9,14 @@ import "./Report.scss";
 
 const Report = () => {
   const { id } = useParams();
-  // console.log(id);
+  let [searchParams] = useSearchParams();
+  const projectId = searchParams.get("project");
+
+  //
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [singleProject, setSingleProject] = useState({});
+  const hunterId = useSelector((state) => state.auth.userId);
 
   const notifySuccess = () =>
     toast.success("Done", {
@@ -39,9 +44,22 @@ const Report = () => {
 
   const sendMessage = async () => {
     try {
-      // const data = await postReport({ message });
-      // console.log(data);
-      // console.log("gna", { message });
+      const data = await postReport(
+        {
+          message,
+          email: localStorage.getItem("email")
+            ? localStorage.getItem("email")
+            : "",
+        },
+        id,
+        projectId,
+        hunterId
+      );
+      console.log(data);
+      console.log("gna", {
+        message: message,
+        email: localStorage.getItem("email"),
+      });
       notifySuccess();
       console.log("gna");
     } catch (error) {
@@ -54,7 +72,7 @@ const Report = () => {
     async function getData() {
       setLoading(true);
       try {
-        const data = await getSingleProject(id);
+        const data = await getSingleProject(id, projectId);
         console.log(data);
         setSingleProject(data.data);
       } catch (error) {}
@@ -63,17 +81,6 @@ const Report = () => {
     getData();
   }, []);
 
-  // useEffect(() => {
-  //   const get = async () => {
-  //     try {
-  //       const { data } = await getSingleProject(id);
-  //       console.log(data, "data");
-  //     } catch (err) {
-  //       throw new Error(err.message);
-  //     }
-  //   };
-  //   get();
-  // }, []);
   return (
     <Layout>
       <div className="report home">
@@ -88,17 +95,6 @@ const Report = () => {
                 <img src="../../assets/images/footer.jpg" alt="" />
               </div>
               <p className="report-home-main-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-                iure omnis illo nostrum reiciendis incidunt distinctio tempore,
-                neque consequatur dolore necessitatibus ex, vel quasi veritatis
-                sit, repellendus veniam vitae totam!Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit. Ullam iure omnis illo nostrum
-                reiciendis incidunt distinctio tempore, neque consequatur dolore
-                necessitatibus ex, vel quasi veritatis sit, repellendus veniam
-                vitae totam!Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Ullam iure omnis illo nostrum reiciendis incidunt
-                distinctio tempore, neque consequatur dolore necessitatibus ex,
-                vel quasi veritatis sit, repellendus veniam vitae totam!
                 {singleProject ? singleProject.description : ""}
               </p>
               <h2>Write your message to this organization</h2>
