@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getAllProjects } from "../../api";
+import { APIUrl, getAllProjects } from "../../api";
 import Layout from "../../layout/Layout";
 import Router from "../../router/router";
 import { addProjects } from "../../store/slices/projectsSlice";
@@ -77,7 +77,7 @@ const Home = () => {
                 ({
                   id,
                   organization,
-                  image,
+                  image_url,
                   reward_from,
                   reward_to,
                   description,
@@ -87,7 +87,10 @@ const Home = () => {
                   return (
                     <div className="home-list-item" key={id}>
                       <div className="home-list-item-image">
-                        <img src={image} alt={organization} />
+                        <img
+                          src={`${APIUrl}/projects/${image_url}`}
+                          alt={organization}
+                        />
                       </div>
                       <div className="home-list-item-desc">
                         <div className="home-list-item-desc-title">

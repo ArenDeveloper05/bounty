@@ -37,8 +37,11 @@
       display: flex;
       box-shadow: 2px 2px 10px grey;
       background: linear-gradient(45deg, #673ab7, #8f8fd5, transparent);
-      border-radius: 85px;
-
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.02);
+      }
       &-image {
         width: 25%;
         height: 100%;

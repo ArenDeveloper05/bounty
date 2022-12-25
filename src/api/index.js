@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const APIUrl = "https://49b1-62-89-0-182.eu.ngrok.io/api";
+export const APIUrl = "https://49b1-62-89-0-182.eu.ngrok.io/api";
 
 const api = axios.create({
     baseURL: APIUrl,
